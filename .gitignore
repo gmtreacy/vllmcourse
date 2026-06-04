@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# uv
+uv.lock
+
+# Models and weights
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+
+# Quantized outputs
+*-quantized/
+*-compressed/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Editor
+.zed/
+.vscode/
+.idea/
+
+# OS
+.DS_Store

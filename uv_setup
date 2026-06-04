@@ -1,0 +1,4 @@
+uv init
+uv venv
+uv add torch
+source .venv/bin/activate
