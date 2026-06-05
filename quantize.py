@@ -13,7 +13,7 @@ import pathlib
 import warnings
 
 import torch
-from huggingface_hub import snapshot_download, upload_folder
+from huggingface_hub import create_repo, snapshot_download, upload_folder
 from llmcompressor import oneshot
 from llmcompressor.modifiers.quantization import GPTQModifier
 
@@ -86,6 +86,7 @@ print(f"Reduction:          {reduction:.0f}%")
 HF_REPO = os.environ.get("HF_REPO")
 if HF_REPO:
     print(f"\nPushing {OUTPUT_DIR!r} to Hub repo {HF_REPO!r} …")
+    create_repo(HF_REPO, repo_type="model", private=True, exist_ok=True)
     upload_folder(
         repo_id=HF_REPO,
         folder_path=OUTPUT_DIR,
