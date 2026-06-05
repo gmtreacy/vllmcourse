@@ -2,7 +2,6 @@
 # requires-python = ">=3.10"
 # dependencies = [
 #   "llmcompressor==0.7.1",
-#   "vllm==0.11.0",
 #   "transformers>=4.47.0",
 #   "datasets>=2.21.0",
 #   "torch>=2.4.0",

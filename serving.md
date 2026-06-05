@@ -1,4 +1,9 @@
 tmux new -s serve
+
+# dont use venv from training, wrong torch version?
+
+pip install vllm
+
 vllm serve ./Qwen3-0.6B-W4A16 --dtype=bfloat16 --max-model-len 4096
 
 curl http://localhost:8000/v1/models
