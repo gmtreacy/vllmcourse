@@ -16,3 +16,7 @@ tmux new -s quant
 
 # 6. run
 uv run quantize.py
+
+export HF_TOKEN=....
+
+HF_REPO=gmtreacy/Qwen3-0.6B-W4A16 uv run quantize.py

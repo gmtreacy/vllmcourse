@@ -14,7 +14,7 @@ import pathlib
 import warnings
 
 import torch
-from huggingface_hub import snapshot_download
+from huggingface_hub import snapshot_download, upload_folder
 from llmcompressor import oneshot
 from llmcompressor.modifiers.quantization import GPTQModifier
 
@@ -82,3 +82,17 @@ print("=" * 45)
 print(f"Original (BF16):    {fmt(size_orig)}")
 print(f"Quantized (W4A16):  {fmt(size_q)}")
 print(f"Reduction:          {reduction:.0f}%")
+
+# ── push to hub ───────────────────────────────────────────────────────────────
+HF_REPO = os.environ.get("HF_REPO")
+if HF_REPO:
+    print(f"\nPushing {OUTPUT_DIR!r} to Hub repo {HF_REPO!r} …")
+    upload_folder(
+        repo_id=HF_REPO,
+        folder_path=OUTPUT_DIR,
+        repo_type="model",
+        commit_message=f"Add {recipe.scheme} quantized weights",
+    )
+    print(f"Done: https://huggingface.co/{HF_REPO}")
+else:
+    print("\nSkipping Hub push (set HF_REPO=<your-repo-id> to enable)")
